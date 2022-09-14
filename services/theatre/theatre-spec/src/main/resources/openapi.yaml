@@ -1,0 +1,121 @@
+openapi: 3.0.0
+x-stoplight:
+  id: 3qk81d61g6tfg
+info:
+  title: bookmy
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  '/theatres/shows/{movieName}':
+    parameters:
+      - schema:
+          type: string
+        name: movieName
+        in: path
+        required: true
+        description: name of the movie
+    get:
+      summary: Your GET endpoint
+      tags: ["theatres"]
+      responses:
+        '200':
+          $ref: '#/components/responses/TheatresGetResponseBody'
+      operationId: getShowsByTheatre
+      description: Get theatres with shows for given movie name on given date.
+      parameters:
+        - schema:
+            type: string
+            format: date
+          in: query
+          name: date
+          description: date of show
+        - schema:
+            type: string
+          in: query
+          name: city
+          description: city in which you want to watch show
+components:
+  schemas:
+    Theatre:
+      type: object
+      x-examples:
+        example-1:
+          theatreId: 1
+          name: Inox
+          city: thane
+      properties:
+        theatreId:
+          type: integer
+        name:
+          type: string
+        city:
+          type: string
+        movies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Movie'
+    Movie:
+      type: object
+      x-examples:
+        example-1:
+          movieId: 0
+          name: Forest Gump
+          releaseDate: 'null'
+      properties:
+        movieId:
+          type: integer
+        name:
+          type: string
+        releaseDate:
+          type: string
+          format: date
+        shows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Show'
+    Show:
+      type: object
+      x-examples:
+        example-1:
+          showId: 7
+          showTime: '18:17:58.069'
+          showDate: '2022-09-14'
+          language: null
+          seatingCapacity: 0
+          showStatus: null
+          seatingArrangement: null
+          houseFull: false
+      properties:
+        showId:
+          type: integer
+        showTime:
+          type: string
+          format: time
+        showDate:
+          type: string
+          format: date
+        language:
+          type: string
+        seatingCapacity:
+          type: integer
+        showStatus:
+          type: string
+          enum:
+            - ON_TIME
+            - CANCELLED
+            - DELAYED
+            - BOOKING_FREEZED
+        seatingArrangement:
+          nullable: true
+        houseFull:
+          type: boolean
+  responses:
+    TheatresGetResponseBody:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Theatre'

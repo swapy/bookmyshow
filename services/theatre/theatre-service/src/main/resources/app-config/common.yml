@@ -1,0 +1,45 @@
+# be careful when adding property to this file, will add these configurations to all profiles including test profile.
+server:
+  port: 9091
+  servlet:
+    contextPath: /theatre-service
+  compression:
+    enabled: true
+    min-response-size: 2048 # Compress the response only if the response size is at least 2KB
+    mime-types:
+      - text/html
+      - text/xml
+      - text/plain
+      - application/json
+  http2:
+    enabled: true
+
+spring:
+  application:
+    name: dt-customers-service
+  resources:
+    add-mappings: false
+  mvc:
+    throw-exception-if-no-handler-found: true
+logging:
+  level:
+    org.apache: INFO
+    org.springframework: INFO
+    root: INFO
+    org.zalando: INFO
+
+#swagger config
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /api-docs/swagger-ui
+
+# actuator mappings
+management:
+  endpoint:
+    mappings:
+  endpoints:
+    web:
+      exposure:
+        include: "mappings,diskSpace,ping,health,auditevents,beans,info,metrics,env,prometheus"

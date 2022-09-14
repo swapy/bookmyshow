@@ -1,0 +1,30 @@
+spring:
+  config:
+    activate:
+      on-profile:
+        - local
+
+  #database configuration
+  datasource:
+    url: jdbc:postgresql://localhost:5432/customerdb
+    username: postgres
+    password: postgres
+  jpa:
+    generate-ddl: false
+    show-sql: true
+#    database-platform: PostgreSQL
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: validate
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full
+
+logging:
+  level:
+    org.springframework: INFO

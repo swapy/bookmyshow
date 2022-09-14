@@ -1,0 +1,12 @@
+# will use dev services urls instead of locally hosted services
+# to be used in conjunction with local profile as other properties will be coming from local config
+spring:
+  config:
+    activate:
+      on-profile:
+        - local-vpn
+
+client:
+  data-tool-api:
+    base:
+      url: https://mb2dev.kotak.com/api/data-api-tool-service

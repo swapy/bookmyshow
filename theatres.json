@@ -1,0 +1,60 @@
+[
+  {
+    "theatreId": 1,
+    "name": "Inox",
+    "city": "thane",
+    "movies": [
+      {
+        "movieId": 0,
+        "name": "Forest Gump",
+        "releaseDate": null,
+        "shows": [
+          {
+            "showId": 1,
+            "showTime": "18:17:58.069",
+            "showDate": "2022-09-14",
+            "language": null,
+            "seatingCapacity": 0,
+            "showStatus": null,
+            "seatingArrangement": null,
+            "houseFull": false
+          },
+          {
+            "showId": 7,
+            "showTime": "18:17:58.069",
+            "showDate": "2022-09-14",
+            "language": null,
+            "seatingCapacity": 0,
+            "showStatus": null,
+            "seatingArrangement": null,
+            "houseFull": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "theatreId": 2,
+    "name": "Cinepolis",
+    "city": "thane",
+    "movies": [
+      {
+        "movieId": 0,
+        "name": "Forest Gump",
+        "releaseDate": null,
+        "shows": [
+          {
+            "showId": 2,
+            "showTime": "18:17:58.069",
+            "showDate": "2022-09-14",
+            "language": null,
+            "seatingCapacity": 0,
+            "showStatus": null,
+            "seatingArrangement": null,
+            "houseFull": false
+          }
+        ]
+      }
+    ]
+  }
+]

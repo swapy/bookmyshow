@@ -1,0 +1,7 @@
+{
+  "cif": "9999999999",
+  "type": "/conflict",
+  "title": "CD007",
+  "status": 409,
+  "detail": "Duplicate TAN"
+}

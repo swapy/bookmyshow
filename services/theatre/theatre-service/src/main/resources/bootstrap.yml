@@ -1,0 +1,3 @@
+spring:
+  banner:
+    location: claspath:banner.txt

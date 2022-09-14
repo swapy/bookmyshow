@@ -1,0 +1,18 @@
+{
+  "cif": "1234567890",
+  "documents": [
+    {
+      "documentType": "PAN",
+      "docNumber": "AASCK8888B",
+      "email": "s@s.com",
+      "mobile": "9999999999",
+      "name": "John A Hopkins"
+    },
+    {
+      "documentType": "TAN",
+      "docNumber": "AAGS88888C",
+      "email": "s@s.com",
+      "mobile": "9999999999"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "type": "/badRequest",
+  "title": "SE003",
+  "status": 400,
+  "detail": "Invalid Input For Property docIndicator"
+}

@@ -1,0 +1,11 @@
+{
+  "type": "https://zalando.github.io/problem/constraint-violation",
+  "status": 400,
+  "violations": [
+    {
+      "field": "sendCustomerDetailsRequest",
+      "message": "{pan tan document must be valid}"
+    }
+  ],
+  "title": "Constraint Violation"
+}

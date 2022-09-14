@@ -1,0 +1,75 @@
+version: "3.9"
+services:
+  customers:
+    build:
+      context: services/dt-customers-service
+      dockerfile: src/main/resources/docker/Dockerfile
+    image: direct-tax/dt-customers-service
+    ports:
+      - "9091:9091"
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK=INFO
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/customerdb
+    networks:
+      - backend
+  products:
+    build:
+      context: services/dt-products-service
+      dockerfile: src/main/resources/docker/Dockerfile
+    image: direct-tax/dt-products-service
+    ports:
+      - "9092:9092"
+    environment:
+      - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK=INFO
+    networks:
+      - backend
+  db:
+    image: postgres:14.4-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_MULTIPLE_DATABASES: |-
+        customerdb,sonardb
+    expose:
+      - "5433" # Publishes 5433 to other containers but NOT to host machine
+    ports:
+      - '5433:5433'
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    networks:
+      - backend
+    command: -p 5433
+  sonarqube:
+    image: sonarqube:community
+    depends_on:
+      - db
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://db:5433/sonardb
+      SONAR_JDBC_USERNAME: postgres
+      SONAR_JDBC_PASSWORD: postgres
+    networks:
+      - backend
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+    ports:
+      - "9000:9000"
+
+volumes:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
+  db:
+    driver: local
+
+networks:
+  backend:
+    name: backend
+    driver: bridge
