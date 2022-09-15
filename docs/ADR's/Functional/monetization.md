@@ -13,7 +13,7 @@ Should be able to generate revenue for platform
 
 ## Options
 a. Charge convinence fees to customer - charge fixed fee to customer per show booking. 
-b. Affiliate with credit card, wallet vendors for customer discount and take commission on each transaction.  
+b. Affiliate with credit card, wallet vendors for customer discount and take commission on each transaction.    
 c. Ads on platform. 
 d. Host pre launch live shows per request of movie director. Will cost them appropriately.  
 f. Option to select food for the show, have commission depending on food sales.  
