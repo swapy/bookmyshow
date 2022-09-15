@@ -15,7 +15,7 @@ paths:
     get:
       summary: Fetch shows by theatre
       tags:
-        - shows
+        - theatres
       responses:
         '200':
           $ref: '#/components/responses/TheatresGetResponseBody'
@@ -40,27 +40,35 @@ paths:
         - shows
       summary: Create Show
       operationId: createShows
-      responses:
-        '200':
-          $ref: '#/components/responses/TheatresGetResponseBody'
       description: ''
       requestBody:
         $ref: '#/components/requestBodies/TheatrePostRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Show'
     put:
       tags:
         - shows
-      summary: ''
+      summary: UpdateShow
       operationId: updateShow
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Show'
       description: ''
       requestBody:
         $ref: '#/components/requestBodies/TheatrePostRequestBody'
     delete:
       tags:
         - shows
-      summary: ''
+      summary: DeleteShow
       operationId: deleteShow
       responses:
         '200':
@@ -113,8 +121,6 @@ components:
           format: date
         language:
           type: string
-        seatingCapacity:
-          type: integer
         showStatus:
           type: string
           enum:
@@ -149,3 +155,4 @@ components:
             required:
               - theatreId
               - movieId
+      description: ''

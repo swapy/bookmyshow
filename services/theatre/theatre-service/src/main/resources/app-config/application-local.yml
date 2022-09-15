@@ -9,6 +9,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/customerdb
     username: postgres
     password: postgres
+    driver-class-name: org.postgresql.Driver
   jpa:
     generate-ddl: false
     show-sql: true

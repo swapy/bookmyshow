@@ -1,35 +1,24 @@
 package com.bookmy.theatres.domain.entity;
 
-import com.bookmy.theatres.domain.response.ShowTheatreResultSetMapping;
+import com.bookmy.theatres.mapper.ShowTheatreResultSetMapping;
+import com.bookmy.theatres.spec.model.Show.ShowStatusEnum;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder(setterPrefix = "with")
+@SuperBuilder(setterPrefix = "with")
 @Getter
 @Setter
+@NoArgsConstructor
 @Table(name = "mshow")
 //•	Browse theatres currently running the show (movie selected) in the town, including show timing by a chosen date
 
 @NamedNativeQueries({
-    @NamedNativeQuery(name = "ShowEntity.findShows", query = """
-            SELECT *
-            FROM   mshow m
-            WHERE  m.show_date =? 1
-                   AND m.movie_id = (SELECT id
-                                     FROM   movie mm
-                                     WHERE  mm.mov_name =? 2)
-                   AND m.theatre_id IN(SELECT id
-                                       FROM   theatre t
-                                       WHERE  t.city =? 3)
-        """
-        , resultClass = ShowEntity.class),
     @NamedNativeQuery(name = "ShowEntity.findShowsWithMetadata", query = """
         SELECT s.id           AS showId,
                s.show_date    AS showDate,
@@ -74,7 +63,6 @@ import lombok.*;
         )
     }
 )
-
 public class ShowEntity extends AbstractEntity {
 
     @NotNull
@@ -87,15 +75,13 @@ public class ShowEntity extends AbstractEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "showstatus")
-    private ShowStatus showStatus;
+    private ShowStatusEnum showStatus;
 
     @Column(name = "ishousefull")
     private Boolean isHouseFull = false;
 
-    //    @OneToMany
-//    @JoinColumn(name = "showId")
-//    @Transient
-//    private List<SeatingArrangement> seatingArrangement;
+    @Column(name = "inlanguage")
+    private String language;
 
     @Override
     public String toString() {

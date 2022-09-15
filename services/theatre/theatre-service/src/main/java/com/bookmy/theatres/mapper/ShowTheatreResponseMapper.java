@@ -1,4 +1,4 @@
-package com.bookmy.theatres.domain.response;
+package com.bookmy.theatres.mapper;
 
 import com.bookmy.theatres.spec.model.Movie;
 import com.bookmy.theatres.spec.model.Show;

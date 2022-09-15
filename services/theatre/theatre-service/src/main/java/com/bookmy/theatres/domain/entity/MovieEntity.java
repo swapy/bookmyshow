@@ -6,11 +6,11 @@ import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder(setterPrefix = "with")
+@SuperBuilder(setterPrefix = "with")
 @Getter
 @Setter
 @Table(name = "movie")

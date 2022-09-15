@@ -51,12 +51,6 @@
       <groupId>com.fasterxml.jackson.datatype</groupId>
       <artifactId>jackson-datatype-jdk8</artifactId>
     </dependency>
-    <dependency>
-      <groupId>com.bookmy</groupId>
-      <artifactId>error-lib</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
   <description>Theatre service</description>
   <modelVersion>4.0.0</modelVersion>

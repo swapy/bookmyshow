@@ -2,6 +2,9 @@ package com.bookmy.theatres.domain.entity;
 
 
 import javax.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Persistable;
 
@@ -12,6 +15,8 @@ import org.springframework.data.domain.Persistable;
  */
 @MappedSuperclass
 @Slf4j
+@SuperBuilder(setterPrefix = "with")
+@NoArgsConstructor
 public abstract class AbstractEntity extends AuditAwareBaseEntity implements Persistable<Integer> {
 
     @Id

@@ -1,12 +1,44 @@
 # Project to book movie tickets
 
+# Documentation:
+1. Archiectural Decision Records [ADR](docs/ADR's) 
+2. High level design view [High level design](docs/High Level design)
+3. Low level design view [High level design](docs/Low%20Level%20Design)
+
+> Note: Class diagram is not updated. Might have some outdated information.
+
+##  Functional aspects covered
+
+- Theatre service
+  Description: created to render theatre and linked shows.
+
+### APIS:
+1. getShowsByTheatre
+2. createShows
+3. deleteShow
+4. updateShow
+
+visit  [ShowsController](services/theatre/theatre-service/src/main/java/com/bookmy/theatres/controller/ShowsController.java)
 
 ## Non functional features
-- API first approach with OpenAPI 3.0
-- JPA auditing with AuditAware
+- API first approach with OpenAPI 3.0 visit  [openapi specifications](services/theatre/theatre-spec/src/main/resources/openapi.yaml)
+- JPA auditing with AuditAware 
 - Central Logging configuration
+- Global exception handler
+- Logging filter to log request and responses
+- Env based configuration enabled
+- common configuration in separate file
+- API specification in specification project separately to handle clients,api generation[specifications](services/theatre/theatre-spec)
+- Flyway enabled to support database migrations
+- shared libraries are separate to enable common code to be shared accross services. visit  [shared libraries](shared)
+- Bill of materials for service and spec [bom](shared/bom)
+
+
 ## Microservices envisaged
 - Theatre service
 - Booking service
 - Payment integration service
 - User service
+
+
+

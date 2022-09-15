@@ -1,22 +1,21 @@
 package com.bookmy.theatres.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
-import com.bookmy.theatres.domain.response.ShowTheatreResultSetMapping;
+import com.bookmy.errors.errors.BadRequestProblem;
+import com.bookmy.theatres.mapper.ShowTheatreResultSetMapping;
 import com.bookmy.theatres.repository.ShowRepository;
-import com.bookmy.theatres.spec.model.Movie;
-import com.bookmy.theatres.spec.model.Show;
+import com.bookmy.theatres.spec.model.*;
 import com.bookmy.theatres.spec.model.Show.ShowStatusEnum;
-import com.bookmy.theatres.spec.model.Theatre;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,9 +23,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class TheatreServiceTest {
+class ShowServiceTest {
 
-    private TheatreService theatreService;
+    private ShowService showService;
 
     @Mock
     private ShowRepository showRepository;
@@ -78,7 +77,7 @@ class TheatreServiceTest {
 
     @BeforeEach
     void setup() {
-        theatreService = new TheatreService(showRepository);
+        showService = new ShowService(showRepository);
     }
 
     @Test
@@ -86,7 +85,7 @@ class TheatreServiceTest {
         when(showRepository.findShowsWithMetadata(anyString(), any(LocalDate.class),
             anyString())).thenReturn(
             Collections.emptyList());
-        final Collection<Theatre> showsByCityDateAndMovie = theatreService.getShowsByCityDateAndMovie(
+        final Collection<Theatre> showsByCityDateAndMovie = showService.getShowsByCityDateAndMovie(
             anyString(), any(LocalDate.class), anyString());
 
         assertThat(showsByCityDateAndMovie).isEmpty();
@@ -99,7 +98,7 @@ class TheatreServiceTest {
 
         when(showRepository.findShowsWithMetadata(city, LocalDate.now(), movieName)).thenReturn(
             dbResponse());
-        final Collection<Theatre> theatres = theatreService.getShowsByCityDateAndMovie(
+        final Collection<Theatre> theatres = showService.getShowsByCityDateAndMovie(
             city, LocalDate.now(), movieName);
 
         assertThat(theatres).hasSize(2);
@@ -109,6 +108,15 @@ class TheatreServiceTest {
             .hasSize(2);
     }
 
+    @Test
+    void onUpdateShowIdIsMandatory() {
+        UpdateShowRequest updateShowRequest = UpdateShowRequest.builder()
+            .show(new Show())
+            .build();
+        assertThatThrownBy(() -> showService.updateShow(updateShowRequest)).isInstanceOf(
+            BadRequestProblem.class);
+
+    }
     private Collection<Theatre> getExpected(String city, String movieName) {
 
         Theatre t1 = Theatre

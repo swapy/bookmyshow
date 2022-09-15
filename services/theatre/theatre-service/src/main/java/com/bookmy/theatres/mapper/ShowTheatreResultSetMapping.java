@@ -1,4 +1,4 @@
-package com.bookmy.theatres.domain.response;
+package com.bookmy.theatres.mapper;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

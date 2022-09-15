@@ -2,6 +2,8 @@ package com.bookmy.theatres.domain.entity;
 
 import java.time.OffsetDateTime;
 import javax.persistence.*;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.annotation.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -9,6 +11,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @Slf4j
+@SuperBuilder(setterPrefix = "with")
+@NoArgsConstructor
 public class AuditAwareBaseEntity {
 
     @Column(nullable = false, updatable = false)
