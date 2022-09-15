@@ -2,8 +2,8 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <artifactId>kotak-gov-payments-direct-tax</artifactId>
-  <description>Kotak government payments direct tax project</description>
+  <artifactId>bookmy-app</artifactId>
+  <description>Project to book tickets</description>
   <groupId>com.bookmy</groupId>
   <modelVersion>4.0.0</modelVersion>
 

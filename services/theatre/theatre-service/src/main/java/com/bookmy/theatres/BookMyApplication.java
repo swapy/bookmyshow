@@ -9,7 +9,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 //@EnableJpaRepositories
-@EnableFeignClients(basePackages = {"com.kotak.dt.restclients"})
+@EnableFeignClients(basePackages = {"com.bookmy"})
 @EnableAutoConfiguration(exclude = ErrorMvcAutoConfiguration.class)
 //https://github.com/zalando/problem-spring-web/tree/main/problem-spring-web#configuration
 public class BookMyApplication implements CommandLineRunner {

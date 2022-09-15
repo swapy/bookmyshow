@@ -1,0 +1,138 @@
+@startuml
+class Theatre {
+  theatreId: int
+  name: String 
+  address: Address
+  movies: Set<Movie>
+}
+
+class Address {
+  city: String
+  state: String
+}
+
+class Movie {
+  movieId: int   
+ name :String
+ release_date: LocalDate
+ shows: Set<Show>
+}
+
+class Show {
+      showId: int   
+  startTime: LocalDateTime
+  endTime: LocalDateTime
+  seatingLineUp: SeatingArrangement
+  language: String
+  seatingCapacity: int
+  showStatus: ShowStatus
+  +isHouseFull() : boolean
+}
+
+enum ShowStatus {
+    ONTIME
+    DELAYED
+    CANCELLED
+    BOOKING_FREEZE
+}
+
+class SeatingArrangement {
+    segments: List<Segment>
+}
+
+class Segment { 
+    seats: List<Seat>
+    segmentType: SegmentType
+    pricePerSeat: BigDecimal
+    +isSegmentFull() : boolean
+}
+
+class Seat {
+    id: String
+    isAllocated: boolean
+}
+
+enum SegmentType {
+ REGULAR
+ LOUNGE
+ EXTRA_COMFORT
+}
+
+
+class Customer {
+    name: String 
+    password: char[]
+    mobile: String 
+    email: String
+}
+
+class BookingTransaction {
+    bookingId: String
+    bill: Bill
+    payment: Payment
+    bookingState: BookingState
+    ticket: Optional<Ticket>
+    customer: Customer
+}
+
+
+enum BookingState {
+    SUCCESS
+    FAILED
+}
+class Payment {
+    paymentMode: PaymentMode
+    paymentState: PaymentState
+}
+
+class Ticket {
+    id: String
+    movieName: String
+    showTime: LocalDateTime
+    seats: List<Seat>
+}
+
+class Bill {
+    tax: BigDecimal
+    seatPriceTotal: BigDecimal 
+    discount: BigDecimal
+    discontPercent: float
+    grTotal: BigDecimal
+}
+
+enum PaymentMode {
+    UPI
+    CASH
+    ON_COUNTER
+    ONLINE
+}
+
+enum PaymentState {
+    SUCCESSFULL
+    PROCESSING
+    FAILED
+    UNPROCESSABLE
+}
+
+Theatre "1" o-- "many" Movie: hosts
+Movie "1" *-- "many" Show: has
+Show "1" o-- "one" SeatingArrangement: has
+Show "1" *-- "one" ShowStatus: has
+
+Theatre "1" o--	 "one" Address: has
+
+SeatingArrangement "1" *-- "many" Segment: has
+Segment "1" *-- "many" Seat: has
+Segment "1" *-- "one" SegmentType: has
+
+BookingTransaction "1" o-- "one" Customer: isDoneBy
+BookingTransaction "1" *-- "one" BookingState: has
+BookingTransaction "1" o-- "1" Ticket: optionally reserved
+BookingTransaction "1" o-- "1" Bill: has
+BookingTransaction "1" o-- "1" Payment: has
+
+Payment "1" o-- "1" PaymentMode: has
+Payment "1" o-- "1" PaymentState: has
+
+@enduml
+

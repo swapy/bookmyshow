@@ -19,5 +19,5 @@ public interface ShowRepository extends JpaRepository<ShowEntity, Integer> {
     @Query("from ShowEntity s where s.showDate=?1 and s.movie_id=?2 and s.theatre_id=?3")
     List<ShowEntity> findAllShows(LocalDate date, int movieId, int theatreId);
 
-    void delete(ShowEntity entity);
+
 }

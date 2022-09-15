@@ -5,8 +5,3 @@ spring:
     activate:
       on-profile:
         - local-vpn
-
-client:
-  data-tool-api:
-    base:
-      url: https://mb2dev.kotak.com/api/data-api-tool-service

@@ -1,10 +1,10 @@
 version: "3.9"
 services:
-  customers:
+  theatre-service:
     build:
-      context: services/dt-customers-service
+      context: services/theatre-service
       dockerfile: src/main/resources/docker/Dockerfile
-    image: direct-tax/dt-customers-service
+    image: bookmy/theatre-service
     ports:
       - "9091:9091"
     depends_on:
@@ -14,17 +14,6 @@ services:
     environment:
       - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK=INFO
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/customerdb
-    networks:
-      - backend
-  products:
-    build:
-      context: services/dt-products-service
-      dockerfile: src/main/resources/docker/Dockerfile
-    image: direct-tax/dt-products-service
-    ports:
-      - "9092:9092"
-    environment:
-      - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK=INFO
     networks:
       - backend
   db:

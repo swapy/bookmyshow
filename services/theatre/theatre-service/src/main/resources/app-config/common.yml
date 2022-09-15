@@ -16,7 +16,7 @@ server:
 
 spring:
   application:
-    name: dt-customers-service
+    name: theatre-service
   resources:
     add-mappings: false
   mvc:

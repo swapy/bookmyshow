@@ -1,6 +1,4 @@
 openapi: 3.0.0
-x-stoplight:
-  id: 3qk81d61g6tfg
 info:
   title: bookmy
   version: '1.0'
@@ -14,10 +12,10 @@ paths:
         name: movieName
         in: path
         required: true
-        description: name of the movie
     get:
-      summary: Your GET endpoint
-      tags: ["theatres"]
+      summary: Fetch shows by theatre
+      tags:
+        - shows
       responses:
         '200':
           $ref: '#/components/responses/TheatresGetResponseBody'
@@ -35,15 +33,48 @@ paths:
           in: query
           name: city
           description: city in which you want to watch show
+  /theatres/shows:
+    parameters: []
+    post:
+      tags:
+        - shows
+      summary: Create Show
+      operationId: createShows
+      responses:
+        '200':
+          $ref: '#/components/responses/TheatresGetResponseBody'
+      description: ''
+      requestBody:
+        $ref: '#/components/requestBodies/TheatrePostRequestBody'
+    put:
+      tags:
+        - shows
+      summary: ''
+      operationId: updateShow
+      responses:
+        '200':
+          description: OK
+      description: ''
+      requestBody:
+        $ref: '#/components/requestBodies/TheatrePostRequestBody'
+    delete:
+      tags:
+        - shows
+      summary: ''
+      operationId: deleteShow
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: showId
+          description: show id to delete
 components:
   schemas:
     Theatre:
       type: object
-      x-examples:
-        example-1:
-          theatreId: 1
-          name: Inox
-          city: thane
       properties:
         theatreId:
           type: integer
@@ -57,11 +88,6 @@ components:
             $ref: '#/components/schemas/Movie'
     Movie:
       type: object
-      x-examples:
-        example-1:
-          movieId: 0
-          name: Forest Gump
-          releaseDate: 'null'
       properties:
         movieId:
           type: integer
@@ -76,16 +102,6 @@ components:
             $ref: '#/components/schemas/Show'
     Show:
       type: object
-      x-examples:
-        example-1:
-          showId: 7
-          showTime: '18:17:58.069'
-          showDate: '2022-09-14'
-          language: null
-          seatingCapacity: 0
-          showStatus: null
-          seatingArrangement: null
-          houseFull: false
       properties:
         showId:
           type: integer
@@ -106,8 +122,6 @@ components:
             - CANCELLED
             - DELAYED
             - BOOKING_FREEZED
-        seatingArrangement:
-          nullable: true
         houseFull:
           type: boolean
   responses:
@@ -119,3 +133,19 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/Theatre'
+  requestBodies:
+    TheatrePostRequestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              show:
+                $ref: '#/components/schemas/Show'
+              theatreId:
+                type: integer
+              movieId:
+                type: integer
+            required:
+              - theatreId
+              - movieId

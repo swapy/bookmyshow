@@ -51,15 +51,21 @@
       <groupId>com.fasterxml.jackson.datatype</groupId>
       <artifactId>jackson-datatype-jdk8</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.bookmy</groupId>
+      <artifactId>error-lib</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
-  <description>Direct Tax Customers service</description>
+  <description>Theatre service</description>
   <modelVersion>4.0.0</modelVersion>
-  <name>dt-customers-service</name>
+  <name>theatre-service</name>
 
   <parent>
-    <artifactId>bookmy-bom</artifactId>
+    <artifactId>bookmy-service-bom</artifactId>
     <groupId>com.bookmy</groupId>
-    <relativePath>../../../shared/bookmy-bom/pom.xml</relativePath>
+    <relativePath>../../../shared/bom/bookmy-service-bom/pom.xml</relativePath>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <version>0.0.1-SNAPSHOT</version>

@@ -6,7 +6,7 @@
     <module name="theatre-service" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="com.kotak.dt.customers.*" />
+        <option name="PATTERN" value="com.bookmy.dt.customers.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>

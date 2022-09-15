@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>logging-utils</artifactId>
+  <dependencies>
+    <dependency>
+      <artifactId>jackson-databind</artifactId>
+      <groupId>com.fasterxml.jackson.core</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>javax.servlet-api</artifactId>
+      <groupId>javax.servlet</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>commons-lang3</artifactId>
+      <groupId>org.apache.commons</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>lombok</artifactId>
+      <groupId>org.projectlombok</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>logstash-logback-encoder</artifactId>
+      <groupId>net.logstash.logback</groupId>
+      <scope>runtime</scope>
+      <version>7.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+  </dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <artifactId>jackson-bom</artifactId>
+        <groupId>com.fasterxml.jackson</groupId>
+        <scope>import</scope>
+        <type>pom</type>
+        <version>2.13.1</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <description>logging utils for log</description>
+  <groupId>com.bookmy</groupId>
+  <modelVersion>4.0.0</modelVersion>
+  <name>logging-utils</name>
+  <parent>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <groupId>org.springframework.boot</groupId>
+    <relativePath/>
+    <version>2.7.1</version> <!-- lookup parent from repository -->
+  </parent>
+
+  <properties>
+    <java.version>17</java.version>
+    <spring-framework-bom.version>5.3.15</spring-framework-bom.version>
+  </properties>
+  <version>0.0.1-SNAPSHOT</version>
+
+</project>

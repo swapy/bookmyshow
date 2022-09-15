@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>error-lib</artifactId>
+  <dependencies>
+
+    <!-- problem -->
+    <dependency>
+      <artifactId>problem-spring-web-starter</artifactId>
+      <groupId>org.zalando</groupId>
+      <version>0.27.0</version>
+    </dependency>
+    <dependency>
+      <artifactId>lombok</artifactId>
+      <groupId>org.projectlombok</groupId>
+      <version>1.18.24</version>
+    </dependency>
+  </dependencies>
+  <groupId>com.bookmy</groupId>
+  <modelVersion>4.0.0</modelVersion>
+
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+
+  <version>1.0.0-SNAPSHOT</version>
+
+</project>

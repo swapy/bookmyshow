@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>bookmy-service-bom</artifactId>
+  <build>
+    <pluginManagement>
+      <!-- Configure checkstyle for any issues. -->
+      <!-- ref: https://maven.apache.org/plugins/maven-checkstyle-plugin/examples/upgrading-checkstyle.html -->
+      <plugins>
+        <plugin>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <configuration>
+            <configLocation>checkstyle.xml</configLocation>
+            <consoleOutput>true</consoleOutput>
+            <encoding>UTF-8</encoding>
+            <failOnViolation>true</failOnViolation>
+            <failsOnError>true</failsOnError>
+            <linkXRef>false</linkXRef>
+            <skip>true</skip>
+            <violationSeverity>warning</violationSeverity>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <artifactId>checkstyle</artifactId>
+              <groupId>com.puppycrawl.tools</groupId>
+              <version>10.3.1</version>
+            </dependency>
+          </dependencies>
+          <executions>
+            <execution>
+              <goals>
+                <goal>checkstyle</goal>
+              </goals>
+              <id>validate</id>
+              <phase>validate</phase>
+            </execution>
+          </executions>
+          <groupId>org.apache.maven.plugins</groupId>
+          <version>3.1.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <configuration>
+            <rules>
+              <requireJavaVersion>
+                <version>17</version>
+              </requireJavaVersion>
+            </rules>
+          </configuration>
+          <groupId>org.apache.maven.plugins</groupId>
+          <version>3.1.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <configuration>
+            <argLine>${surefire.jacoco.args}</argLine>
+            <excludes>
+              <exclude>**/*IT.java</exclude>
+            </excludes>
+            <skipTests>${skipUTs}</skipTests>
+          </configuration>
+          <groupId>org.apache.maven.plugins</groupId>
+          <version>2.22.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <configuration>
+            <argLine>${failsafe.jacoco.args}</argLine>
+            <classesDirectory>${project.build.outputDirectory}</classesDirectory>
+            <excludes>
+              <exclude>**/*Test.java</exclude>
+            </excludes>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>integration-test</goal>
+                <goal>verify</goal>
+              </goals>
+            </execution>
+          </executions>
+          <groupId>org.apache.maven.plugins</groupId>
+          <version>${failsafe.plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <executions>
+            <!-- Unit testing -->
+            <execution>
+              <configuration>
+                <destFile>${project.build.directory}/jacoco-output/jacoco-unit-tests.exec
+                </destFile>
+                <propertyName>surefire.jacoco.args</propertyName>
+              </configuration>
+              <goals>
+                <goal>prepare-agent</goal>
+              </goals>
+              <id>before-unit-test-execution</id>
+            </execution>
+            <execution>
+              <configuration>
+                <dataFile>${project.build.directory}/jacoco-output/jacoco-unit-tests.exec
+                </dataFile>
+                <outputDirectory>
+                  ${project.reporting.outputDirectory}/jacoco-unit-test-coverage-report
+                </outputDirectory>
+              </configuration>
+              <goals>
+                <goal>report</goal>
+              </goals>
+              <id>after-unit-test-execution</id>
+              <phase>test</phase>
+            </execution>
+            <!-- integration testing -->
+            <execution>
+              <configuration>
+                <destFile>${project.build.directory}/jacoco-output/jacoco-integration-tests.exec
+                </destFile>
+                <propertyName>failsafe.jacoco.args</propertyName>
+              </configuration>
+              <goals>
+                <goal>prepare-agent</goal>
+              </goals>
+              <id>before-integration-test-execution</id>
+              <phase>pre-integration-test</phase>
+            </execution>
+            <execution>
+              <configuration>
+                <dataFile>${project.build.directory}/jacoco-output/jacoco-integration-tests.exec
+                </dataFile>
+                <outputDirectory>
+                  ${project.reporting.outputDirectory}/jacoco-integration-test-coverage-report
+                </outputDirectory>
+              </configuration>
+              <goals>
+                <goal>report</goal>
+              </goals>
+              <id>after-integration-test-execution</id>
+              <phase>post-integration-test</phase>
+            </execution>
+          </executions>
+          <groupId>org.jacoco</groupId>
+          <version>0.8.8</version>
+        </plugin>
+        <plugin>
+          <groupId>org.sonarsource.scanner.maven</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>3.4.0.905</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <groupId>org.jacoco</groupId>
+      </plugin>
+      <!-- Configure checkstyle for any issues. -->
+      <plugin>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+
+    <dependency>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+
+    <dependency>
+      <artifactId>hibernate-validator</artifactId>
+      <groupId>org.hibernate.validator</groupId>
+    </dependency>
+
+    <!-- for rest client -->
+    <dependency>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+      <groupId>org.springframework.cloud</groupId>
+    </dependency>
+
+    <!-- for testing -->
+    <dependency>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <exclusions>
+        <exclusion>
+          <artifactId>junit</artifactId>
+          <groupId>junit</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>junit-vintage-engine</artifactId>
+          <groupId>org.junit.vintage</groupId>
+        </exclusion>
+      </exclusions>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <artifactId>h2</artifactId>
+      <groupId>com.h2database</groupId>
+      <scope>test</scope>
+      <version>2.1.210</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <artifactId>assertj-core</artifactId>
+      <groupId>org.assertj</groupId>
+      <scope>test</scope>
+      <version>${assertj-core.version}</version>
+    </dependency>
+
+    <dependency>
+      <artifactId>lombok</artifactId>
+      <groupId>org.projectlombok</groupId>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Swagger UI -->
+    <dependency>
+      <artifactId>springdoc-openapi-ui</artifactId>
+      <groupId>org.springdoc</groupId>
+      <version>1.6.9</version>
+    </dependency>
+
+    <!-- database -->
+    <dependency>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+
+    <dependency>
+      <artifactId>flyway-core</artifactId>
+      <groupId>org.flywaydb</groupId>
+
+    </dependency>
+
+    <dependency>
+      <artifactId>postgresql</artifactId>
+      <groupId>org.postgresql</groupId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- shared libraries -->
+    <!-- logging -->
+    <dependency>
+      <artifactId>spring-boot-starter-logging</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.bookmy</groupId>
+      <artifactId>logging-utils</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.bookmy</groupId>
+      <artifactId>archunit-tests</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.bookmy</groupId>
+      <artifactId>error-lib</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+
+    <!-- problem -->
+    <dependency>
+      <artifactId>problem-spring-web-starter</artifactId>
+      <groupId>org.zalando</groupId>
+      <version>0.27.0</version>
+    </dependency>
+
+    <!-- for webclient -->
+    <dependency>
+      <artifactId>spring-boot-starter-webflux</artifactId>
+      <exclusions>
+        <!-- Exclude the Netty dependency -->
+        <exclusion>
+          <artifactId>spring-boot-starter-reactor-netty</artifactId>
+          <groupId>org.springframework.boot</groupId>
+        </exclusion>
+      </exclusions>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+
+    <!-- Use Tomcat instead -->
+    <dependency>
+      <artifactId>spring-boot-starter-tomcat</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+  </dependencies>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <groupId>org.springframework.cloud</groupId>
+        <scope>import</scope>
+        <type>pom</type>
+        <version>${spring-cloud.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <groupId>com.bookmy</groupId>
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <packaging>pom</packaging>
+
+  <parent>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <groupId>org.springframework.boot</groupId>
+    <version>2.7.1</version>
+    <relativePath/>
+  </parent>
+
+  <properties>
+    <assertj-core.version>3.23.1</assertj-core.version>
+    <failsafe.plugin.version>3.0.0-M7</failsafe.plugin.version>
+    <maven.compiler.source>17</maven.compiler.source>
+
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring-cloud.version>2021.0.3</spring-cloud.version>
+    <spring.boot.version>2.7.1</spring.boot.version>
+  </properties>
+
+  <version>1.0.0-SNAPSHOT</version>
+
+</project>

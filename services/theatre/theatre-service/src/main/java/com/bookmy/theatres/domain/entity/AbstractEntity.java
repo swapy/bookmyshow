@@ -12,7 +12,7 @@ import org.springframework.data.domain.Persistable;
  */
 @MappedSuperclass
 @Slf4j
-public abstract class AbstractEntity implements Persistable<Integer> {
+public abstract class AbstractEntity extends AuditAwareBaseEntity implements Persistable<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

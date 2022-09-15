@@ -1,10 +1,8 @@
 spring:
   config:
-    name: dt-customers-service
+    name: theatre-service
     import: app-config/common.yml
   profiles:
-    group:
-      vpn: local,local-vpn
     active: local
 ---
 spring:
@@ -12,24 +10,3 @@ spring:
     activate:
       on-profile: local
     import: app-config/application-local.yml
-
----
-spring:
-  config:
-    activate:
-      on-profile: local-vpn
-    import: app-config/application-local-vpn.yml
-
----
-spring:
-  config:
-    activate:
-      on-profile: dev
-    import: /etc/config/dt-customers-service-dev.properties
-
----
-spring:
-  config:
-    activate:
-      on-profile: uat
-    import: /etc/config/dt-customers-service-uat.yml

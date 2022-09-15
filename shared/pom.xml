@@ -7,10 +7,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <modules>
-    <module>bookmy-bom</module>
-<!--    <module>common-objects</module>-->
-<!--    <module>logging-utils</module>-->
-<!--    <module>rest-clients</module>-->
+    <module>bom</module>
+    <module>archunit-tests</module>
+    <module>logging-utils</module>
+    <module>error-lib</module>
   </modules>
   <packaging>pom</packaging>
   <properties>

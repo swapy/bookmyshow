@@ -1,7 +1,0 @@
-{
-  "cif": "9999999999",
-  "type": "/unprocessable-entity",
-  "title": "CD002",
-  "status": 422,
-  "detail": "No PAN or TAN registered for this cif"
-}

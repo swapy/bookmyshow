@@ -6,7 +6,7 @@
     <artifactId>bookmy-spec-bom</artifactId>
     <groupId>com.bookmy</groupId>
     <version>1.0.0-SNAPSHOT</version>
-    <relativePath>../../../shared/bookmy-spec-bom/pom.xml</relativePath>
+    <relativePath>../../../shared/bom/bookmy-spec-bom/pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
