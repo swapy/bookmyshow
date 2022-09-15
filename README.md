@@ -1,7 +1,7 @@
 # Project to book movie tickets
 
 # Documentation:
-1. Archiectural Decision Records [ADR](docs/ADR's) 
+1. Architectural Decision Records [ADR](docs/ADR's)
 2. High level design view [High level design](docs/High Level design)
 3. Low level design view [High level design](docs/Low%20Level%20Design)
 
@@ -32,7 +32,9 @@ visit  [ShowsController](services/theatre/theatre-service/src/main/java/com/book
 - Flyway enabled to support database migrations
 - shared libraries are separate to enable common code to be shared accross services. visit  [shared libraries](shared)
 - Bill of materials for service and spec [bom](shared/bom)
-
+- ArchUnit support to ensure developers follow good code practices [archunit](shared/archunit-tests)
+- Common error library to support all common errors [common error library](shared/error-lib)
+- Added few unit test cases.
 
 ## Microservices envisaged
 - Theatre service
