@@ -1,0 +1,414 @@
+{
+	"info": {
+		"_postman_id": "36b4f9f7-e9d1-4c7b-9b31-623f634de01c",
+		"name": "bookmy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "391179"
+	},
+	"item": [
+		{
+			"name": "theatres/shows",
+			"item": [
+				{
+					"name": "Create Show",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"theatreId\": 1,\n  \"movieId\": 2,\n  \"show\": {\n    \"showTime\": \"10:43:12\",\n    \"showDate\": \"2022-09-16\",\n    \"language\": \"english\",\n    \"showStatus\": \"BOOKING_FREEZED\",\n    \"houseFull\": false\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/theatres/shows",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"theatres",
+								"shows"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Show",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"theatreId\": 1,\n  \"movieId\": 2,\n  \"show\": {\n    \"showTime\": \"10:43:12\",\n    \"showDate\": \"2022-09-16\",\n    \"language\": \"english\",\n    \"showStatus\": \"BOOKING_FREEZED\",\n    \"houseFull\": false\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/theatres/shows",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"theatres",
+										"shows"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "128"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 15 Sep 2022 14:19:20 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"showId\": 2,\n    \"showTime\": \"10:43:12\",\n    \"showDate\": \"2022-09-16\",\n    \"language\": \"english\",\n    \"showStatus\": \"BOOKING_FREEZED\",\n    \"houseFull\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "UpdateShow",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"theatreId\": 1,\n  \"movieId\": 2,\n  \"show\": {\n    \"showTime\": \"10:43:12\",\n    \"showDate\": \"2022-09-16\",\n    \"language\": \"english\",\n    \"showStatus\": \"BOOKING_FREEZED\",\n    \"houseFull\": false\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/theatres/shows",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"theatres",
+								"shows"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "UpdateShow",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"theatreId\": 1,\n    \"movieId\": 2,\n    \"show\": {\n        \"showId\": 1,\n        \"showTime\": \"10:43:12\",\n        \"showDate\": \"2022-09-16\",\n        \"language\": \"english\",\n        \"showStatus\": \"ON_TIME\",\n        \"houseFull\": false\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/theatres/shows",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"theatres",
+										"shows"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "115"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 15 Sep 2022 14:26:45 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"showId\": 1,\n    \"showTime\": \"10:43:12\",\n    \"showDate\": \"2022-09-16\",\n    \"language\": null,\n    \"showStatus\": \"ON_TIME\",\n    \"houseFull\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "DeleteShow",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/theatres/shows?showId=11993668",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"theatres",
+								"shows"
+							],
+							"query": [
+								{
+									"key": "showId",
+									"value": "11993668",
+									"description": "show id to delete"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/theatres/shows?showId=11993668",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"theatres",
+										"shows"
+									],
+									"query": [
+										{
+											"key": "showId",
+											"value": "11993668"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Fetch shows by theatre",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/theatres/shows/:movieName?date=2022-09-16&city=thane",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"theatres",
+								"shows",
+								":movieName"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-09-16",
+									"description": "date of show"
+								},
+								{
+									"key": "city",
+									"value": "thane",
+									"description": "city in which you want to watch show"
+								}
+							],
+							"variable": [
+								{
+									"key": "movieName",
+									"value": "Forest%20Gump",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "Get theatres with shows for given movie name on given date."
+					},
+					"response": [
+						{
+							"name": "Fetch shows by theatre",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/theatres/shows/:movieName?date=2022-09-16&city=thane",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"theatres",
+										"shows",
+										":movieName"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2022-09-16",
+											"description": "date of show"
+										},
+										{
+											"key": "city",
+											"value": "thane",
+											"description": "city in which you want to watch show"
+										}
+									],
+									"variable": [
+										{
+											"key": "movieName",
+											"value": "Forest%20Gump",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "247"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 15 Sep 2022 14:24:06 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"theatreId\": 1,\n        \"name\": \"Inox\",\n        \"city\": \"thane\",\n        \"movies\": [\n            {\n                \"movieId\": null,\n                \"name\": \"Forest Gump\",\n                \"releaseDate\": null,\n                \"shows\": [\n                    {\n                        \"showId\": 1,\n                        \"showTime\": \"10:43:12\",\n                        \"showDate\": \"2022-09-16\",\n                        \"language\": null,\n                        \"showStatus\": \"BOOKING_FREEZED\",\n                        \"houseFull\": null\n                    }\n                ]\n            }\n        ]\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:9091/theatre-service",
+			"type": "string"
+		}
+	]
+}

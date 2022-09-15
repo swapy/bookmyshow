@@ -12,6 +12,7 @@
 - Theatre service
   Description: created to render theatre and linked shows.
 
+
 ### APIS:
 1. getShowsByTheatre
 2. createShows
@@ -44,3 +45,17 @@ visit  [ShowsController](services/theatre/theatre-service/src/main/java/com/book
 
 
 
+### Postman collection
+Postman collection can be found at [Postman collection](services/theatre/theatre-service/postman)
+
+### How to run
+1. create database in postgres instance with name `customerdb`.
+2. Update [application-local](services/theatre/theatre-service/src/main/resources/app-config/application-local.yml) yaml file to point to your database configuration.
+  ` datasource:
+   url: jdbc:postgresql://localhost:5432/customerdb
+   username: postgres
+   password: postgres`
+3. do `mvn clean install` in the root project level.
+4. Change to main application dir
+`cd bookmy/services/theatre/theatre-service/src/main/java`
+5. Run `mvn spring-boot:run`
