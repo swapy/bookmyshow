@@ -10,12 +10,12 @@ Understand and finalize IAM solution for current buisness requirement
 
 ## Assumptions
 
-Personas to manage
-    - Managing customers
-    - Managing internal employees
-      - These are internal employees to bookmy which manage access control for customers and theatre users.
-    - Theatre user management
-      - Theatre users are users who will be logged in for system to system api calls.
+Personas to manage  
+    - Managing customers  
+    - Managing internal employees  
+      - These are internal employees to bookmy which manage access control for customers and theatre users.  
+    - Theatre user management  
+      -  Theatre users are users who will be logged in for system to system api calls.  
   
 ## Decision
 We will store data of 3 different personas in 3 different realms.

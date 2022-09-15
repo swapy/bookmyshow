@@ -11,9 +11,9 @@ Store static content and localizations.
 ## Assumptions
 
 ## Decision
-a. Store all static content for website and mobile screens in cms
-b. localized data can be stored in cms. Metadata can be localized with all indian language support.
-c. use strapi cms.
+a. Store all static content for website and mobile screens in cms  
+b. localized data can be stored in cms. Metadata can be localized with all indian language support.  
+c. use strapi cms.  
 
 ## Proposed solution
 1. Strapi cms to store static data.
