@@ -1,4 +1,4 @@
-package com.kotak.mb2.archunit;
+package com.bookmy.archunit;
 
 import com.tngtech.archunit.core.domain.*;
 import com.tngtech.archunit.lang.*;
@@ -81,7 +81,7 @@ public abstract class ArchUnitRules {
 
     public static ArchRule layersShouldBeFreeOfCycles() {
         return slices()
-                .matching("com.kotak.mb2.(*)..")
+                .matching("com.bookmy.(*)..")
                 .should().beFreeOfCycles();
     }
 

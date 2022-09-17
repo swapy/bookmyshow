@@ -30,7 +30,11 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         ObjectMapper mapper = new ObjectMapper()
             .registerModule(new ParameterNamesModule())
             .registerModule(new Jdk8Module())
+            .registerModules(
+                new ProblemModule().withStackTraces(false),
+                new ConstraintViolationProblemModule())
             .registerModule(new JavaTimeModule()); // new module, NOT JSR310Module
+
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         return mapper;
     }

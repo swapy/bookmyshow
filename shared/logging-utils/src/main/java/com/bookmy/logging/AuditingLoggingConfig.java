@@ -1,4 +1,4 @@
-package com.kotak.dt.logging;
+package com.bookmy.logging;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

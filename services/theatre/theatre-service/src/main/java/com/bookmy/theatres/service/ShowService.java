@@ -12,6 +12,7 @@ import com.bookmy.theatres.spec.model.Show;
 import com.bookmy.theatres.spec.model.Theatre;
 import com.bookmy.theatres.spec.model.UpdateShowRequest;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -71,13 +72,34 @@ public class ShowService {
 
     @Transactional
     public Show updateShow(UpdateShowRequest updateShowRequest) {
-        if (Objects.isNull(updateShowRequest.getShow().getShowId())) {
+        final Integer showId = updateShowRequest.getShow().getShowId();
+        if (Objects.isNull(showId)) {
             throw new BadRequestProblem(INVALID_SHOWID.getCode(), INVALID_SHOWID.getMessage());
         }
 
-        ShowEntity show = ShowsMapper.mapShowForUpdate(updateShowRequest);
-        final ShowEntity updated = showRepository.save(show);
+//        ShowEntity show = ShowsMapper.mapShowForUpdate(updateShowRequest);
+        final Optional<ShowEntity> showEntity = showRepository.findById(showId);
+        if (showEntity.isEmpty()) {
+            throw new BadRequestProblem(INVALID_SHOWID.getCode(), INVALID_SHOWID.getMessage());
+        }
+
+        final ShowEntity show = showEntity.get();
+        ShowEntity updated = updateShowValues(show, updateShowRequest);
         return ShowsMapper.mapShowEntityToResponse(updated);
+
+    }
+
+    private ShowEntity updateShowValues(ShowEntity show, UpdateShowRequest updateShowRequest) {
+        Show request = updateShowRequest.getShow();
+        show.setShowDate(request.getShowDate());
+        show.setShowTime(LocalTime.parse(request.getShowTime()));
+        show.setLanguage(request.getLanguage());
+        show.setIsHouseFull(request.getHouseFull());
+        show.setIsHouseFull(request.getHouseFull());
+        show.setShowStatus(request.getShowStatus());
+        show.setTheatre_id(updateShowRequest.getTheatreId());
+
+        return show;
     }
 
     public void deleteShow(Integer showId) {
